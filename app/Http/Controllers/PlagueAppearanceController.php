@@ -14,7 +14,7 @@ class PlagueAppearanceController extends Controller
      */
     public function index()
     {
-        //
+        return view('Appearance/index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PlagueAppearanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('Appearance/createAppearence');
     }
 
     /**

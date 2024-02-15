@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('plague_appearances', function (Blueprint $table) {
             $table->id();
+            $table->string('crop');
             $table->string('name');
             $table->string('location');
             $table->string('level');
