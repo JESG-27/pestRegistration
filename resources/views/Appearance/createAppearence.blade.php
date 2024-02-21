@@ -8,5 +8,56 @@
 </head>
 <body>
     <h1>Registrar Aparición de Plaga</h1>
+    <form method="POST" action="/registro">
+        @csrf
+        <label for="cultivo">Cultivo</label>
+        <select name="crop" id="cultivo" required>
+            <option selected value="">-</option>
+            <option value="maiz" @selected(old('maiz') == 'maiz')>Maíz</option>
+            <option value="limon" @selected(old('limon') == 'limon')>Limon</option>
+            <option value="agave" @selected(old('agave') == 'agave')>Agave</option>
+            <option value="aguacate" @selected(old('aguacate') == 'aguacate')>Aguacate</option>
+        </select>
+        @error('crop')
+            <div>{{ $message }}</div>
+        @enderror
+
+        <label for="nombre">Enfermedad/Plaga</label>
+        <select name="name" id="nombre" required>
+            <option selected value="">-</option>
+            <option value="hongo" @selected(old('hongo') == 'hongo')>Hongo</option>
+            <option value="bacteria" @selected(old('bacteria') == 'bacteria')>Bacteria</option>
+            <option value="insecto" @selected(old('insecto') == 'insecto')>Insectos</option>
+            <option value="maleza" @selected(old('maleza') == 'maleza')>Maleza</option>
+        </select>
+        @error('name')
+            <div>{{ $message }}</div>
+        @enderror
+
+        <label for="ubicacion">Ubicación</label>
+        <select name="location" id="ubicacion" required>
+            <option selected value="">-</option>
+            <option value="arandas" @selected(old('arandas') == 'arandas')>Arandas</option>
+            <option value="tepatitlan" @selected(old('tepatitlan') == 'tepatitlan')>Tepatitlan</option>
+            <option value="atotonilco" @selected(old('atotonilco') == 'atotonilco')>Atotonilco</option>
+            <option value="jesus maria" @selected(old('jesus maria') == 'jesus maria')>Jesús María</option>
+        </select>
+        @error('location')
+            <div>{{ $message }}</div>
+        @enderror
+
+        <label for="nivel">Nivel</label>
+        <select name="level" id="nivel" required>
+            <option selected value="">-</option>
+            <option value="low" @selected(old('low') == 'low')>Bajo</option>
+            <option value="medium" @selected(old('medium') == 'medium')>Medio</option>
+            <option value="high" @selected(old('high') == 'high')>Alto</option>
+        </select>
+        @error('level')
+            <div>{{ $message }}</div>
+        @enderror
+
+        <button type="submit">Registrar</button>
+    </form>
 </body>
 </html>
