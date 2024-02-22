@@ -49,9 +49,9 @@
         <label for="nivel">Nivel</label>
         <select name="level" id="nivel" required>
             <option selected value="">-</option>
-            <option value="low" @selected(old('low') == 'low')>Bajo</option>
-            <option value="medium" @selected(old('medium') == 'medium')>Medio</option>
-            <option value="high" @selected(old('high') == 'high')>Alto</option>
+            <option value="bajo" @selected(old('bajo') == 'bajo')>Bajo</option>
+            <option value="medio" @selected(old('medio') == 'medio')>Medio</option>
+            <option value="alto" @selected(old('alto') == 'alto')>Alto</option>
         </select>
         @error('level')
             <div>{{ $message }}</div>

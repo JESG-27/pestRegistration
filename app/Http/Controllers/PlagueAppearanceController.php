@@ -14,7 +14,8 @@ class PlagueAppearanceController extends Controller
      */
     public function index()
     {
-        return view('Appearance.index');
+        $plagueAppearances = plagueAppearance::all();
+        return view('plagueAppearance.index', compact('plagueAppearances'));
     }
 
     /**
@@ -24,7 +25,7 @@ class PlagueAppearanceController extends Controller
      */
     public function create()
     {
-        return view('Appearance.createAppearence');
+        return view('plagueAppearance.create');
     }
 
     /**
@@ -33,7 +34,7 @@ class PlagueAppearanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, plagueAppearance $plagueAppearance)
+    public function store(Request $request)
     {
         # Validation
         $request->validate([
@@ -43,13 +44,14 @@ class PlagueAppearanceController extends Controller
             'level' => ['required', 'string', 'max:255']
         ]);
 
+        $plagueAppearance = new plagueAppearance();
         $plagueAppearance->crop = $request->crop;
         $plagueAppearance->name = $request->name;
         $plagueAppearance->location = $request->location;
         $plagueAppearance->level = $request->level;
         $plagueAppearance->save();
 
-        return redirect()->route('Appearance.show', compact($plagueAppearance));
+        return redirect()->route('registro.index');
     }
 
     /**
@@ -60,7 +62,9 @@ class PlagueAppearanceController extends Controller
      */
     public function show(plagueAppearance $plagueAppearance)
     {
-        //
+        dd($plagueAppearance);
+        #return view('plagueAppearance.show',  ['plagueAppearance'=>$plagueAppearance]);
+        return view('plagueAppearance.show', compact('plagueAppearance'));
     }
 
     /**
@@ -71,7 +75,7 @@ class PlagueAppearanceController extends Controller
      */
     public function edit(plagueAppearance $plagueAppearance)
     {
-        //
+        return view('plagueAppearance.edit', compact('plagueAppearance'));
     }
 
     /**
@@ -83,7 +87,7 @@ class PlagueAppearanceController extends Controller
      */
     public function update(Request $request, plagueAppearance $plagueAppearance)
     {
-        //
+        return ("Update");
     }
 
     /**
@@ -94,6 +98,6 @@ class PlagueAppearanceController extends Controller
      */
     public function destroy(plagueAppearance $plagueAppearance)
     {
-        //
+        return ("Destroy");
     }
 }
