@@ -62,8 +62,6 @@ class PlagueAppearanceController extends Controller
      */
     public function show(plagueAppearance $plagueAppearance)
     {
-        dd($plagueAppearance);
-        #return view('plagueAppearance.show',  ['plagueAppearance'=>$plagueAppearance]);
         return view('plagueAppearance.show', compact('plagueAppearance'));
     }
 
@@ -87,7 +85,21 @@ class PlagueAppearanceController extends Controller
      */
     public function update(Request $request, plagueAppearance $plagueAppearance)
     {
-        return ("Update");
+        # Validation
+        $request->validate([
+            'crop' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+            'level' => ['required', 'string', 'max:255']
+        ]);
+
+        $plagueAppearance->crop = $request->crop;
+        $plagueAppearance->name = $request->name;
+        $plagueAppearance->location = $request->location;
+        $plagueAppearance->level = $request->level;
+        $plagueAppearance->save();
+
+        return redirect()->route('plagueAppearance.show', $plagueAppearance);
     }
 
     /**
@@ -98,6 +110,7 @@ class PlagueAppearanceController extends Controller
      */
     public function destroy(plagueAppearance $plagueAppearance)
     {
-        return ("Destroy");
+        $plagueAppearance->delete();
+        return redirect()->route('plagueAppearance.index');
     }
 }

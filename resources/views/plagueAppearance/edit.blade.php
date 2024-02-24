@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>Registrar Aparición de Plaga</h1>
-    {{ $plagueAppearance }}
-    <form method="POST" action="">
+    <form method="POST" action="{{ route('plagueAppearance.update', $plagueAppearance) }}">
         @csrf
+        @method('PATCH')
         <label for="cultivo">Cultivo</label>
         <select name="crop" id="cultivo" required>
             <option value="maiz" @selected($plagueAppearance->crop == 'maiz')>Maíz</option>
@@ -24,11 +24,10 @@
 
         <label for="nombre">Enfermedad/Plaga</label>
         <select name="name" id="nombre" required>
-            <option selected value="">-</option>
-            <option value="hongo" @selected(old('hongo') == 'hongo')>Hongo</option>
-            <option value="bacteria" @selected(old('bacteria') == 'bacteria')>Bacteria</option>
-            <option value="insecto" @selected(old('insecto') == 'insecto')>Insectos</option>
-            <option value="maleza" @selected(old('maleza') == 'maleza')>Maleza</option>
+            <option value="hongo" @selected($plagueAppearance->name == 'hongo')>Hongo</option>
+            <option value="bacteria" @selected($plagueAppearance->name == 'bacteria')>Bacteria</option>
+            <option value="insecto" @selected($plagueAppearance->name == 'insecto')>Insectos</option>
+            <option value="maleza" @selected($plagueAppearance->name == 'maleza')>Maleza</option>
         </select>
         @error('name')
             <div>{{ $message }}</div>
@@ -36,11 +35,10 @@
 
         <label for="ubicacion">Ubicación</label>
         <select name="location" id="ubicacion" required>
-            <option selected value="">-</option>
-            <option value="arandas" @selected(old('arandas') == 'arandas')>Arandas</option>
-            <option value="tepatitlan" @selected(old('tepatitlan') == 'tepatitlan')>Tepatitlan</option>
-            <option value="atotonilco" @selected(old('atotonilco') == 'atotonilco')>Atotonilco</option>
-            <option value="jesus maria" @selected(old('jesus maria') == 'jesus maria')>Jesús María</option>
+            <option value="arandas" @selected($plagueAppearance->location == 'arandas')>Arandas</option>
+            <option value="tepatitlan" @selected($plagueAppearance->location == 'tepatitlan')>Tepatitlan</option>
+            <option value="atotonilco" @selected($plagueAppearance->location == 'atotonilco')>Atotonilco</option>
+            <option value="jesus maria" @selected($plagueAppearance->location == 'jesus maria')>Jesús María</option>
         </select>
         @error('location')
             <div>{{ $message }}</div>
@@ -48,10 +46,9 @@
 
         <label for="nivel">Nivel</label>
         <select name="level" id="nivel" required>
-            <option selected value="">-</option>
-            <option value="bajo" @selected(old('bajo') == 'bajo')>Bajo</option>
-            <option value="medio" @selected(old('medio') == 'medio')>Medio</option>
-            <option value="alto" @selected(old('alto') == 'alto')>Alto</option>
+            <option value="bajo" @selected($plagueAppearance->level == 'bajo')>Bajo</option>
+            <option value="medio" @selected($plagueAppearance->level == 'medio')>Medio</option>
+            <option value="alto" @selected($plagueAppearance->level == 'alto')>Alto</option>
         </select>
         @error('level')
             <div>{{ $message }}</div>

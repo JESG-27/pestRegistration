@@ -7,7 +7,6 @@
     <title>Vista</title>
 </head>
 <body>
-    {{$plagueAppearance}}
     <h1>Registro: {{ $plagueAppearance->id }}</h1>
     <ul>
         <li>Cultivo: {{ $plagueAppearance->crop }}</li>
@@ -15,5 +14,11 @@
         <li>Ubicación: {{ $plagueAppearance->location }}</li>
         <li>Nivel: {{ $plagueAppearance->level }}</li>
     </ul>
+    <a href="{{ route('plagueAppearance.edit', $plagueAppearance) }}">Modificar</a>
+    <form action="{{ route('plagueAppearance.destroy', $plagueAppearance) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Eliminar</button>
+    </form>
 </body>
 </html>

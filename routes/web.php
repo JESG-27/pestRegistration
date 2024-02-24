@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('registro', PlagueAppearanceController::class);
+Route::resource('plagueAppearance', PlagueAppearanceController::class);

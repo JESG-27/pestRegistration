@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Listado de registro de plagas</h1>
-    <a href="{{ route('registro.create') }}">Agregar Registro</a>
+    <a href="{{ route('plagueAppearance.create') }}">Agregar Registro</a>
     <table>
         <th>
             <tr>
@@ -29,8 +29,7 @@
                 <td>{{ $plagueAppearance -> location }}</td>
                 <td>{{ $plagueAppearance -> level }}</td>
                 <td>
-                    <a href="{{ route('registro.show', $plagueAppearance) }}">Ver</a>
-                    <a href="{{ route('registro.edit', $plagueAppearance) }}">Modificar</a>
+                    <a href="{{ route('plagueAppearance.show', $plagueAppearance) }}">Ver</a>
                 </td>
             </tr>
             @endforeach
