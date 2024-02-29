@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Registrar Aparición de Plaga</h1>
-    <form method="POST" action="/plagueAppearance">
+    <form method="POST" action="/pest">
         @csrf
         <label for="cultivo">Cultivo</label>
         <select name="crop" id="cultivo" required>

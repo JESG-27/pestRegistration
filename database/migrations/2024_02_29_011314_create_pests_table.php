@@ -8,12 +8,10 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('plague_appearances', function (Blueprint $table) {
+        Schema::create('pests', function (Blueprint $table) {
             $table->id();
             $table->string('crop');
             $table->string('name');
@@ -25,11 +23,9 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('plague_appearances');
+        Schema::dropIfExists('pests');
     }
 };
