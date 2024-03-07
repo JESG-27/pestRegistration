@@ -34,7 +34,8 @@ class PestController extends Controller
             'crop' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'location' => ['required', 'string', 'max:255'],
-            'level' => ['required', 'string', 'max:255']
+            'level' => ['required', 'string', 'max:255'],
+            'comment' => ['required', 'string', 'max:255']
         ]);
 
         $pest = new Pest();
@@ -42,6 +43,7 @@ class PestController extends Controller
         $pest->name = $request->name;
         $pest->location = $request->location;
         $pest->level = $request->level;
+        $pest->comment = $request->comment;
         $pest->save();
 
         return redirect()->route('pest.index');
@@ -73,13 +75,15 @@ class PestController extends Controller
             'crop' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'location' => ['required', 'string', 'max:255'],
-            'level' => ['required', 'string', 'max:255']
+            'level' => ['required', 'string', 'max:255'],
+            'comment' => ['required', 'string', 'max:255']
         ]);
 
         $pest->crop = $request->crop;
         $pest->name = $request->name;
         $pest->location = $request->location;
         $pest->level = $request->level;
+        $pest->comment = $request->comment;
         $pest->save();
 
         return redirect()->route('pest.show', $pest);

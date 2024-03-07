@@ -57,6 +57,12 @@
             <div>{{ $message }}</div>
         @enderror
 
+        <label for="comentario">Comentario</label>
+        <textarea name="comment" id="comentario" required></textarea>
+        @error('level')
+            <div>{{ $message }}</div>
+        @enderror
+
         <button type="submit">Registrar</button>
     </form>
 </body>

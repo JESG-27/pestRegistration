@@ -13,6 +13,7 @@
         <li>Enfermedad/Plaga: {{ $pest->name }}</li>
         <li>Ubicación: {{ $pest->location }}</li>
         <li>Nivel: {{ $pest->level }}</li>
+        <li>Comentario: {{ $pest->comment }}</li>
     </ul>
     <a href="{{ route('pest.edit', $pest) }}">Modificar</a>
     <form action="{{ route('pest.destroy', $pest) }}" method="POST">

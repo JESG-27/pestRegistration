@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registrar Plaga</title>
+    <title>Editar registro de plaga</title>
 </head>
 <body>
     <h1>Registrar Aparición de Plaga</h1>
@@ -50,6 +50,12 @@
             <option value="medio" @selected($pest->level == 'medio')>Medio</option>
             <option value="alto" @selected($pest->level == 'alto')>Alto</option>
         </select>
+        @error('level')
+            <div>{{ $message }}</div>
+        @enderror
+
+        <label for="comentario">Comentario</label>
+        <textarea name="comment" id="comentario" required>{{ $pest->comment }}</textarea>
         @error('level')
             <div>{{ $message }}</div>
         @enderror

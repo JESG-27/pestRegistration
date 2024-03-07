@@ -17,6 +17,7 @@
                 <td>Enfermadad/Plaga</td>
                 <td>Ubicación</td>
                 <td>Nivel</td>
+                <td>Comentario</td>
                 <td>Acciones</td>
             </tr>
         </th>
@@ -28,6 +29,7 @@
                 <td>{{ $pest -> name }}</td>
                 <td>{{ $pest -> location }}</td>
                 <td>{{ $pest -> level }}</td>
+                <td>{{ $pest -> comment }}</td>
                 <td>
                     <a href="{{ route('pest.show', $pest) }}">Ver</a>
                 </td>
