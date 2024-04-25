@@ -15,16 +15,16 @@
                 </tr>
             </th>
             <tbody>
-                @foreach ($pests as $pest)
+                @foreach ($records as $record)
                 <tr>
-                    <td>{{ $pest -> id }}</td>
-                    <td>{{ $pest -> crop }}</td>
-                    <td>{{ $pest -> name }}</td>
-                    <td>{{ $pest -> location }}</td>
-                    <td>{{ $pest -> level }}</td>
-                    <td>{{ $pest -> comment }}</td>
+                    <td>{{ $record -> id }}</td>
+                    <td>{{ $record -> crop }}</td>
+                    <td>{{ $record -> name }}</td>
+                    <td>{{ $record -> location }}</td>
+                    <td>{{ $record -> level }}</td>
+                    <td>{{ $record -> comment }}</td>
                     <td class="badge badge-sm bg-gradient-success">
-                        <a href="{{ route('pest.show', $pest) }}">Ver</a>
+                        <a href="{{ route('record.show', $record) }}">Ver</a>
                     </td>
                 </tr>
                 @endforeach

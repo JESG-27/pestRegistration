@@ -1,16 +1,15 @@
 <x-crud-layout>
     <div class="col-lg-4">
-        <form method="POST" action="{{ route('pest.update', $pest) }}">
+        <form method="POST" action="/record">
             @csrf
-            @method('PATCH')
             <div class="card h-100">
                 <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-6 d-flex align-items-center">
-                                <h6 class="mb-0">Editar Aparición de Plaga</h6>
+                                <h6 class="mb-0">Registrar Aparición de Plaga</h6>
                             </div>
                         <div class="col-6 text-end">
-                            <button type="submit" class="btn btn-outline-primary btn-sm mb-0">Actualizar</button>
+                            <button type="submit" class="btn btn-outline-primary btn-sm mb-0">Registrar</button>
                         </div>
                     </div>
                 </div>
@@ -22,10 +21,11 @@
                     </div>
                     <div class="d-flex align-items-center text-sm">
                         <select name="crop" id="cultivo" required>
-                            <option value="maiz" @selected($pest->crop == 'maiz')>Maíz</option>
-                            <option value="limon" @selected($pest->crop == 'limon')>Limon</option>
-                            <option value="agave" @selected($pest->crop == 'agave')>Agave</option>
-                            <option value="aguacate" @selected($pest->crop == 'aguacate')>Aguacate</option>
+                            <option selected value="">-</option>
+                            <option value="maiz" @selected(old('maiz') == 'maiz')>Maíz</option>
+                            <option value="limon" @selected(old('limon') == 'limon')>Limon</option>
+                            <option value="agave" @selected(old('agave') == 'agave')>Agave</option>
+                            <option value="aguacate" @selected(old('aguacate') == 'aguacate')>Aguacate</option>
                         </select>
                         @error('crop')
                             <div>{{ $message }}</div>
@@ -38,10 +38,11 @@
                     </div>
                     <div class="d-flex align-items-center text-sm">
                         <select name="name" id="nombre" required>
-                            <option value="hongo" @selected($pest->name == 'hongo')>Hongo</option>
-                            <option value="bacteria" @selected($pest->name == 'bacteria')>Bacteria</option>
-                            <option value="insecto" @selected($pest->name == 'insecto')>Insectos</option>
-                            <option value="maleza" @selected($pest->name == 'maleza')>Maleza</option>
+                            <option selected value="">-</option>
+                            <option value="hongo" @selected(old('hongo') == 'hongo')>Hongo</option>
+                            <option value="bacteria" @selected(old('bacteria') == 'bacteria')>Bacteria</option>
+                            <option value="insecto" @selected(old('insecto') == 'insecto')>Insectos</option>
+                            <option value="maleza" @selected(old('maleza') == 'maleza')>Maleza</option>
                         </select>
                         @error('name')
                             <div>{{ $message }}</div>
@@ -54,10 +55,11 @@
                     </div>
                     <div class="d-flex align-items-center text-sm">
                         <select name="location" id="ubicacion" required>
-                            <option value="arandas" @selected($pest->location == 'arandas')>Arandas</option>
-                            <option value="tepatitlan" @selected($pest->location == 'tepatitlan')>Tepatitlan</option>
-                            <option value="atotonilco" @selected($pest->location == 'atotonilco')>Atotonilco</option>
-                            <option value="jesus maria" @selected($pest->location == 'jesus maria')>Jesús María</option>
+                            <option selected value="">-</option>
+                            <option value="arandas" @selected(old('arandas') == 'arandas')>Arandas</option>
+                            <option value="tepatitlan" @selected(old('tepatitlan') == 'tepatitlan')>Tepatitlan</option>
+                            <option value="atotonilco" @selected(old('atotonilco') == 'atotonilco')>Atotonilco</option>
+                            <option value="jesus maria" @selected(old('jesus maria') == 'jesus maria')>Jesús María</option>
                         </select>
                         @error('location')
                             <div>{{ $message }}</div>
@@ -70,9 +72,10 @@
                     </div>
                     <div class="d-flex align-items-center text-sm">
                         <select name="level" id="nivel" required>
-                            <option value="bajo" @selected($pest->level == 'bajo')>Bajo</option>
-                            <option value="medio" @selected($pest->level == 'medio')>Medio</option>
-                            <option value="alto" @selected($pest->level == 'alto')>Alto</option>
+                            <option selected value="">-</option>
+                            <option value="bajo" @selected(old('bajo') == 'bajo')>Bajo</option>
+                            <option value="medio" @selected(old('medio') == 'medio')>Medio</option>
+                            <option value="alto" @selected(old('alto') == 'alto')>Alto</option>
                         </select>
                         @error('level')
                             <div>{{ $message }}</div>
@@ -84,8 +87,8 @@
                         <label for="comentario" class="text-dark mb-1 font-weight-bold text-sm">Comentario</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <textarea name="comment" id="comentario" required>{{ $pest->comment }}</textarea>
-                        @error('level')
+                        <textarea name="comment" id="comentario" required></textarea>
+                        @error('comment')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>

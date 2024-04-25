@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\PestController;
+use App\Http\Controllers\RecordController;
+use App\Models\Record;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('pest', PestController::class);
+Route::resource('record', RecordController::class);
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

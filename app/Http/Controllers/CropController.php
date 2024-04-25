@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pest;
+use App\Models\Crop;
 use Illuminate\Http\Request;
 
-class PestController extends Controller
+class CropController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class PestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pest $pest)
+    public function show(Crop $crop)
     {
         //
     }
@@ -42,7 +42,7 @@ class PestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pest $pest)
+    public function edit(Crop $crop)
     {
         //
     }
@@ -50,7 +50,7 @@ class PestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pest $pest)
+    public function update(Request $request, Crop $crop)
     {
         //
     }
@@ -58,7 +58,7 @@ class PestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pest $pest)
+    public function destroy(Crop $crop)
     {
         //
     }
