@@ -22,10 +22,9 @@
                     <div class="d-flex align-items-center text-sm">
                         <select name="crop" id="cultivo" required>
                             <option selected value="">-</option>
-                            <option value="maiz" @selected(old('maiz') == 'maiz')>Maíz</option>
-                            <option value="limon" @selected(old('limon') == 'limon')>Limon</option>
-                            <option value="agave" @selected(old('agave') == 'agave')>Agave</option>
-                            <option value="aguacate" @selected(old('aguacate') == 'aguacate')>Aguacate</option>
+                            @foreach ($crops as $crop)
+                                <option value="{{ $crop->id }}" @selected(old('{{ $crop->name }}') == '{{ $crop->name }}')>{{ $crop->name }}</option>
+                            @endforeach
                         </select>
                         @error('crop')
                             <div>{{ $message }}</div>
@@ -39,10 +38,9 @@
                     <div class="d-flex align-items-center text-sm">
                         <select name="name" id="nombre" required>
                             <option selected value="">-</option>
-                            <option value="hongo" @selected(old('hongo') == 'hongo')>Hongo</option>
-                            <option value="bacteria" @selected(old('bacteria') == 'bacteria')>Bacteria</option>
-                            <option value="insecto" @selected(old('insecto') == 'insecto')>Insectos</option>
-                            <option value="maleza" @selected(old('maleza') == 'maleza')>Maleza</option>
+                            @foreach ($pests as $pest)
+                                <option value="{{ $pest->id }}" @selected(old('{{ $pest->name }}') == '{{ $pest->name }}')>{{ $pest->name }}</option>
+                            @endforeach
                         </select>
                         @error('name')
                             <div>{{ $message }}</div>
@@ -56,10 +54,9 @@
                     <div class="d-flex align-items-center text-sm">
                         <select name="location" id="ubicacion" required>
                             <option selected value="">-</option>
-                            <option value="arandas" @selected(old('arandas') == 'arandas')>Arandas</option>
-                            <option value="tepatitlan" @selected(old('tepatitlan') == 'tepatitlan')>Tepatitlan</option>
-                            <option value="atotonilco" @selected(old('atotonilco') == 'atotonilco')>Atotonilco</option>
-                            <option value="jesus maria" @selected(old('jesus maria') == 'jesus maria')>Jesús María</option>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location->id }}" @selected(old('{{ $location->name }}') == '{{ $location->name }}')>{{ $location->name }}</option>
+                            @endforeach
                         </select>
                         @error('location')
                             <div>{{ $message }}</div>

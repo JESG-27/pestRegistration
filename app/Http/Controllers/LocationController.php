@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pest;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
-class PestController extends Controller
+class LocationController extends Controller
 {
     public function __construct()
     {
@@ -24,7 +24,7 @@ class PestController extends Controller
      */
     public function create()
     {
-        return view('pest.create');
+        return view('location.create');
     }
 
     /**
@@ -34,13 +34,13 @@ class PestController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
+            'state' => ['required', 'string', 'max:255'],
         ]);
 
-        $pest = new Pest();
-        $pest->name = $request->name;
-        $pest->description = $request->description;
-        $pest->save();
+        $location = new Location();
+        $location->name = $request->name;
+        $location->state = $request->state;
+        $location->save();
 
         return redirect()->route('record.index');
     }
@@ -48,7 +48,7 @@ class PestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pest $pest)
+    public function show(Location $location)
     {
         //
     }
@@ -56,7 +56,7 @@ class PestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pest $pest)
+    public function edit(Location $location)
     {
         //
     }
@@ -64,7 +64,7 @@ class PestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pest $pest)
+    public function update(Request $request, Location $location)
     {
         //
     }
@@ -72,7 +72,7 @@ class PestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pest $pest)
+    public function destroy(Location $location)
     {
         //
     }

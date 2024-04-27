@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crop;
+use App\Models\Location;
+use App\Models\Pest;
 use App\Models\Record;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
 class RecordController extends Controller
@@ -18,6 +22,8 @@ class RecordController extends Controller
     public function index()
     {
         $records = Record::all();
+        dd($records);
+        // $records = Record::with('crop:id, name', 'pest: id, name', 'location: id, name')->get();
         return view('record.index', compact('records'));
     }
 
@@ -26,7 +32,10 @@ class RecordController extends Controller
      */
     public function create()
     {
-        return view('record.create');
+        $crops = Crop::all();
+        $pests = Pest::all();
+        $locations = Location::all();
+        return view('record.create', compact('crops', 'pests', 'locations'));
     }
 
     /**
@@ -36,17 +45,18 @@ class RecordController extends Controller
     {
         # Validation
         $request->validate([
-            'crop' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
-            'location' => ['required', 'string', 'max:255'],
+            'crop' => ['required', 'integer'],
+            'name' => ['required', 'integer'],
+            'location' => ['required', 'integer'],
             'level' => ['required', 'string', 'max:255'],
             'comment' => ['required', 'string', 'max:255']
         ]);
 
         $record = new Record();
-        $record->crop = $request->crop;
-        $record->name = $request->name;
-        $record->location = $request->location;
+        $record->user_id = auth()->id();
+        $record->crop_id = $request->crop;
+        $record->pest_id = $request->name;
+        $record->location_id = $request->location;
         $record->level = $request->level;
         $record->comment = $request->comment;
         $record->save();

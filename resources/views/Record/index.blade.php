@@ -18,9 +18,9 @@
                 @foreach ($records as $record)
                 <tr>
                     <td>{{ $record -> id }}</td>
-                    <td>{{ $record -> crop }}</td>
-                    <td>{{ $record -> name }}</td>
-                    <td>{{ $record -> location }}</td>
+                    <td>{{ $record -> crop -> name }}</td>
+                    <td>{{ $record -> pest -> name }}</td>
+                    <td>{{ $record -> location -> name }}</td>
                     <td>{{ $record -> level }}</td>
                     <td>{{ $record -> comment }}</td>
                     <td class="badge badge-sm bg-gradient-success">

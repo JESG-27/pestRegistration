@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class CropController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -20,7 +24,7 @@ class CropController extends Controller
      */
     public function create()
     {
-        //
+        return view('crop.create');
     }
 
     /**
@@ -28,7 +32,17 @@ class CropController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+        ]);
+
+        $crop = new Crop();
+        $crop->name = $request->name;
+        $crop->description = $request->description;
+        $crop->save();
+
+        return redirect()->route('record.index');
     }
 
     /**

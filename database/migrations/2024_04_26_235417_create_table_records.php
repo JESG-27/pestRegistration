@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('crop_id')->constrained();
             $table->foreignId('pest_id')->constrained();
-            $table->string('location');
+            $table->foreignId('location_id')->constrained();
             $table->string('level');
             $table->string('comment');
             $table->timestamps();
