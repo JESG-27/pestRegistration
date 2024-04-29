@@ -20,7 +20,7 @@
                     <td>{{ $record -> id }}</td>
                     <td>{{ $record -> crop -> name }}</td>
                     <td>{{ $record -> pest -> name }}</td>
-                    <td>{{ $record -> location -> name }}</td>
+                    <td>{{ $record -> location -> name }}, {{ $record -> location -> state }}</td>
                     <td>{{ $record -> level }}</td>
                     <td>{{ $record -> comment }}</td>
                     <td class="badge badge-sm bg-gradient-success">

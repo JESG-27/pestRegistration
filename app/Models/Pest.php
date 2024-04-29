@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pest extends Model
 {
     use HasFactory;
+
+    public function records()
+    {
+        return $this->hasMany(Record::class);
+    }
 }
