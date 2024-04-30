@@ -67,27 +67,27 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{ route('crop.create') }}">
+          <a class="nav-link text-white " href="{{ route('crop.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Agregar Cultivo</span>
+            <span class="nav-link-text ms-1">Cultivos</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{ route('pest.create') }}">
+          <a class="nav-link text-white " href="{{ route('pest.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Agregar Plaga</span>
+            <span class="nav-link-text ms-1">Plagas</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="{{ route('location.create') }}">
+          <a class="nav-link text-white " href="{{ route('location.index') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Agregar Ubicación</span>
+            <span class="nav-link-text ms-1">Ubicaciones</span>
           </a>
         </li>
         <li class="nav-item mt-3">

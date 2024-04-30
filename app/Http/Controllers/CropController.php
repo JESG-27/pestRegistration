@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crop;
+use App\Models\Record;
 use Illuminate\Http\Request;
 
 class CropController extends Controller
@@ -16,7 +17,8 @@ class CropController extends Controller
      */
     public function index()
     {
-        //
+        $crops = Crop::all();
+        return view('crop.index', compact('crops'));
     }
 
     /**
@@ -50,7 +52,8 @@ class CropController extends Controller
      */
     public function show(Crop $crop)
     {
-        //
+        $records = Record::where('crop_id', $crop->id)->get();
+        return view('crop.show', compact('crop', 'records'));
     }
 
     /**

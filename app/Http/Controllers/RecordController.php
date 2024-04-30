@@ -45,7 +45,7 @@ class RecordController extends Controller
         # Validation
         $request->validate([
             'crop' => ['required', 'integer'],
-            'name' => ['required', 'integer'],
+            'pest' => ['required', 'integer'],
             'location' => ['required', 'integer'],
             'level' => ['required', 'string', 'max:255'],
             'comment' => ['required', 'string', 'max:255']
@@ -54,7 +54,7 @@ class RecordController extends Controller
         $record = new Record();
         $record->user_id = auth()->id();
         $record->crop_id = $request->crop;
-        $record->pest_id = $request->name;
+        $record->pest_id = $request->pest;
         $record->location_id = $request->location;
         $record->level = $request->level;
         $record->comment = $request->comment;
@@ -76,7 +76,10 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
-        return view('record.edit', compact('record'));
+        $crops = Crop::all();
+        $pests = Pest::all();
+        $locations = Location::all();
+        return view('record.edit', compact('record', 'crops', 'pests', 'locations'));
     }
 
     /**
@@ -86,16 +89,16 @@ class RecordController extends Controller
     {
         # Validation
         $request->validate([
-            'crop' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
-            'location' => ['required', 'string', 'max:255'],
+            'crop' => ['required', 'integer'],
+            'pest' => ['required', 'integer'],
+            'location' => ['required', 'integer'],
             'level' => ['required', 'string', 'max:255'],
             'comment' => ['required', 'string', 'max:255']
         ]);
 
-        $record->crop = $request->crop;
-        $record->name = $request->name;
-        $record->location = $request->location;
+        $record->crop_id = $request->crop;
+        $record->pest_id = $request->pest;
+        $record->location_id = $request->location;
         $record->level = $request->level;
         $record->comment = $request->comment;
         $record->save();

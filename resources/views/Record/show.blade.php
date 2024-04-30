@@ -9,11 +9,28 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li>Cultivo: {{ $record->crop }}</li>
-                    <li>Enfermedad/Plaga: {{ $record->name }}</li>
-                    <li>Ubicación: {{ $record->location }}</li>
-                    <li>Nivel: {{ $record->level }}</li>
-                    <li>Comentario: {{ $record->comment }}</li>
+                    <li>Cultivo</li>
+                    <ul>
+                      <li>{{ $record->crop->name }}</li>
+                      <li>{{ $record->crop->description }}</li>
+                    </ul>
+                    <li>Enfermedad/Plaga</li>
+                    <ul>
+                      <li>{{ $record->pest->name }}</li>
+                      <li>{{ $record->pest->description }}</li>
+                    </ul>
+                    <li>Ubicación:</li>
+                    <ul>
+                      <li>{{ $record->location->name }}, {{ $record->location->state }}</li>
+                    </ul>
+                    <li>Nivel:</li>
+                    <ul>
+                      <li>{{ $record->level }}</li>
+                    </ul>
+                    <li>Comentario:</li>
+                    <ul>
+                      <li>{{ $record->comment }}</li>
+                    </ul>
                 </ul>
                 <div class="row">
                     <div class="col-6 d-flex align-items-center">

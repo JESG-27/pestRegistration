@@ -17,13 +17,13 @@
                 <ul class="list-group">
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="cultivo" class="text-dark mb-1 font-weight-bold text-sm">Cultivo</label>
+                        <label for="crop" class="text-dark mb-1 font-weight-bold text-sm">Cultivo</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="crop" id="cultivo" required>
+                        <select name="crop" id="crop" required>
                             <option selected value="">-</option>
                             @foreach ($crops as $crop)
-                                <option value="{{ $crop->id }}" @selected(old('{{ $crop->name }}') == '{{ $crop->name }}')>{{ $crop->name }}</option>
+                                <option value="{{ $crop->id }}" @selected( old('crop') == $crop->id )>{{ $crop->name }}</option>
                             @endforeach
                         </select>
                         @error('crop')
@@ -33,29 +33,29 @@
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="nombre" class="text-dark mb-1 font-weight-bold text-sm">Enfermedad/Plaga</label>
+                        <label for="pest" class="text-dark mb-1 font-weight-bold text-sm">Enfermedad/Plaga</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="name" id="nombre" required>
+                        <select name="pest" id="pest" required>
                             <option selected value="">-</option>
                             @foreach ($pests as $pest)
-                                <option value="{{ $pest->id }}" @selected(old('{{ $pest->name }}') == '{{ $pest->name }}')>{{ $pest->name }}</option>
+                                <option value="{{ $pest->id }}" @selected(old('pest') == $pest->id )>{{ $pest->name }}</option>
                             @endforeach
                         </select>
-                        @error('name')
+                        @error('pest')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="ubicacion" class="text-dark mb-1 font-weight-bold text-sm">Ubicación</label>
+                            <label for="location" class="text-dark mb-1 font-weight-bold text-sm">Ubicación</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="location" id="ubicacion" required>
+                        <select name="location" id="location" required>
                             <option selected value="">-</option>
                             @foreach ($locations as $location)
-                                <option value="{{ $location->id }}" @selected(old('{{ $location->name }}') == '{{ $location->name }}')>{{ $location->name }}</option>
+                                <option value="{{ $location->id }}" @selected(old('location') == $location->id)>{{ $location->name }}</option>
                             @endforeach
                         </select>
                         @error('location')
@@ -65,10 +65,10 @@
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="nivel" class="text-dark mb-1 font-weight-bold text-sm">Nivel</label>
+                        <label for="level" class="text-dark mb-1 font-weight-bold text-sm">Nivel</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="level" id="nivel" required>
+                        <select name="level" id="level" required>
                             <option selected value="">-</option>
                             <option value="bajo" @selected(old('bajo') == 'bajo')>Bajo</option>
                             <option value="medio" @selected(old('medio') == 'medio')>Medio</option>
@@ -81,10 +81,10 @@
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="comentario" class="text-dark mb-1 font-weight-bold text-sm">Comentario</label>
+                        <label for="comment" class="text-dark mb-1 font-weight-bold text-sm">Comentario</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <textarea name="comment" id="comentario" required></textarea>
+                        <textarea name="comment" id="comment" required></textarea>
                         @error('comment')
                             <div>{{ $message }}</div>
                         @enderror

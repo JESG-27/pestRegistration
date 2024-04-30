@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
+use App\Models\Record;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -16,7 +17,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Location::all();
+        return view('location.index', compact('locations'));
     }
 
     /**
@@ -50,7 +52,8 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        //
+        $records = Record::where('location_id', $location->id)->get();
+        return view('location.show', compact('location', 'records'));
     }
 
     /**

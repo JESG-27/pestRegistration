@@ -18,14 +18,13 @@
                 <ul class="list-group">
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="cultivo" class="text-dark mb-1 font-weight-bold text-sm">Cultivo</label>
+                        <label for="crop" class="text-dark mb-1 font-weight-bold text-sm">Cultivo</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="crop" id="cultivo" required>
-                            <option value="maiz" @selected($record->crop == 'maiz')>Maíz</option>
-                            <option value="limon" @selected($record->crop == 'limon')>Limon</option>
-                            <option value="agave" @selected($record->crop == 'agave')>Agave</option>
-                            <option value="aguacate" @selected($record->crop == 'aguacate')>Aguacate</option>
+                        <select name="crop" id="crop" required>
+                            @foreach ($crops as $crop)
+                                <option value="{{ $crop->id }}" @selected( $record->crop_id  == $crop->id ) >{{ $crop->name }}</option>
+                            @endforeach
                         </select>
                         @error('crop')
                             <div>{{ $message }}</div>
@@ -34,30 +33,28 @@
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="nombre" class="text-dark mb-1 font-weight-bold text-sm">Enfermedad/Plaga</label>
+                        <label for="pest" class="text-dark mb-1 font-weight-bold text-sm">Enfermedad/Plaga</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="name" id="nombre" required>
-                            <option value="hongo" @selected($record->name == 'hongo')>Hongo</option>
-                            <option value="bacteria" @selected($record->name == 'bacteria')>Bacteria</option>
-                            <option value="insecto" @selected($record->name == 'insecto')>Insectos</option>
-                            <option value="maleza" @selected($record->name == 'maleza')>Maleza</option>
+                        <select name="pest" id="pest" required>
+                            @foreach ($pests as $pest)
+                                <option value="{{ $pest->id }}" @selected( $record->pest_id ==  $pest->id )>{{ $pest->name }}</option>
+                            @endforeach
                         </select>
-                        @error('name')
+                        @error('pest')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="ubicacion" class="text-dark mb-1 font-weight-bold text-sm">Ubicación</label>
+                        <label for="location" class="text-dark mb-1 font-weight-bold text-sm">Ubicación</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="location" id="ubicacion" required>
-                            <option value="arandas" @selected($record->location == 'arandas')>Arandas</option>
-                            <option value="tepatitlan" @selected($record->location == 'tepatitlan')>Tepatitlan</option>
-                            <option value="atotonilco" @selected($record->location == 'atotonilco')>Atotonilco</option>
-                            <option value="jesus maria" @selected($record->location == 'jesus maria')>Jesús María</option>
+                        <select name="location" id="location" required>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location->id }}" @selected( $record->location_id == $location->id )>{{ $location->name }}, {{ $location->state }}</option>
+                            @endforeach
                         </select>
                         @error('location')
                             <div>{{ $message }}</div>
@@ -66,10 +63,10 @@
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="nivel" class="text-dark mb-1 font-weight-bold text-sm">Nivel</label>
+                        <label for="level" class="text-dark mb-1 font-weight-bold text-sm">Nivel</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="level" id="nivel" required>
+                        <select name="level" id="level" required>
                             <option value="bajo" @selected($record->level == 'bajo')>Bajo</option>
                             <option value="medio" @selected($record->level == 'medio')>Medio</option>
                             <option value="alto" @selected($record->level == 'alto')>Alto</option>
@@ -81,11 +78,11 @@
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="comentario" class="text-dark mb-1 font-weight-bold text-sm">Comentario</label>
+                        <label for="comment" class="text-dark mb-1 font-weight-bold text-sm">Comentario</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <textarea name="comment" id="comentario" required>{{ $record->comment }}</textarea>
-                        @error('level')
+                        <textarea name="comment" id="comment" required>{{ $record->comment }}</textarea>
+                        @error('comment')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>

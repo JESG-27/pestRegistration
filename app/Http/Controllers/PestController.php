@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pest;
+use App\Models\Record;
 use Illuminate\Http\Request;
 
 class PestController extends Controller
@@ -16,7 +17,8 @@ class PestController extends Controller
      */
     public function index()
     {
-        //
+        $pests = Pest::all();
+        return view('pest.index', compact('pests'));
     }
 
     /**
@@ -50,7 +52,8 @@ class PestController extends Controller
      */
     public function show(Pest $pest)
     {
-        //
+        $records = Record::where('pest_id', $pest->id)->get();
+        return view('pest.show', compact('pest', 'records'));
     }
 
     /**
