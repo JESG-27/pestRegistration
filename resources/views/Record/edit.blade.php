@@ -18,45 +18,45 @@
                 <ul class="list-group">
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="crop" class="text-dark mb-1 font-weight-bold text-sm">Cultivo</label>
+                        <label for="crop_id" class="text-dark mb-1 font-weight-bold text-sm">Cultivo</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="crop" id="crop" required>
+                        <select name="crop_id" id="crop_id" required>
                             @foreach ($crops as $crop)
                                 <option value="{{ $crop->id }}" @selected( $record->crop_id  == $crop->id ) >{{ $crop->name }}</option>
                             @endforeach
                         </select>
-                        @error('crop')
+                        @error('crop_id')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="pest" class="text-dark mb-1 font-weight-bold text-sm">Enfermedad/Plaga</label>
+                        <label for="pest_id" class="text-dark mb-1 font-weight-bold text-sm">Enfermedad/Plaga</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="pest" id="pest" required>
+                        <select name="pest_id" id="pest_id" required>
                             @foreach ($pests as $pest)
                                 <option value="{{ $pest->id }}" @selected( $record->pest_id ==  $pest->id )>{{ $pest->name }}</option>
                             @endforeach
                         </select>
-                        @error('pest')
+                        @error('pest_id')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>
                   </li>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                        <label for="location" class="text-dark mb-1 font-weight-bold text-sm">Ubicación</label>
+                        <label for="location_id" class="text-dark mb-1 font-weight-bold text-sm">Ubicación</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <select name="location" id="location" required>
+                        <select name="location_id" id="location_id" required>
                             @foreach ($locations as $location)
                                 <option value="{{ $location->id }}" @selected( $record->location_id == $location->id )>{{ $location->name }}, {{ $location->state }}</option>
                             @endforeach
                         </select>
-                        @error('location')
+                        @error('location_id')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>

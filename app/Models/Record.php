@@ -9,6 +9,15 @@ class Record extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'crop_id',
+        'pest_id',
+        'location_id',
+        'level',
+        'comment'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -27,6 +36,11 @@ class Record extends Model
     public function location()
     {
         return $this->belongsTo(Location::class);
+    }
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
     }
 
 }

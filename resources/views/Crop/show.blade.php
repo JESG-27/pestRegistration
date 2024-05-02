@@ -20,9 +20,6 @@
                     </ul>
                 </ul>
                 <div class="row">
-                    <div class="col-6 d-flex align-items-center">
-                        <a class="btn bg-gradient-dark mb-0" href="{{ route('crop.edit', $crop) }}">Editar</a>
-                    </div>
                     <div class="col-6 text-end">
                         <form action="{{ route('crop.destroy', $crop) }}" method="POST">
                             @csrf
@@ -38,6 +35,15 @@
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
               <h6 class="text-white text-capitalize ps-3">Registros: {{ count($records) }}</h6>
+              <div class="row">
+                <div class="col-6 text-end">
+                    <form action="{{ route('crop.deleteCropRecords', $crop) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn bg-gradient-dark mb-0">Eliminar Registros</button>
+                    </form>
+                </div>
+              </div>
             </div>
           </div>
           <div class="card-body">

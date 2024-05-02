@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('crop_id')->constrained();
-            $table->foreignId('pest_id')->constrained();
-            $table->foreignId('location_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('crop_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('pest_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('location_id')->constrained()->cascadeOnDelete();
             $table->string('level');
             $table->string('comment');
             $table->timestamps();

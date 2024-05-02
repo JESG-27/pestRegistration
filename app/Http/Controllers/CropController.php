@@ -44,7 +44,7 @@ class CropController extends Controller
         $crop->description = $request->description;
         $crop->save();
 
-        return redirect()->route('record.index');
+        return redirect()->route('crop.index');
     }
 
     /**
@@ -77,6 +77,7 @@ class CropController extends Controller
      */
     public function destroy(Crop $crop)
     {
-        //
+        $crop->delete();
+        return redirect()->route('crop.index');
     }
 }

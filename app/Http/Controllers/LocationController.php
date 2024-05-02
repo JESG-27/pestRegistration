@@ -44,7 +44,7 @@ class LocationController extends Controller
         $location->state = $request->state;
         $location->save();
 
-        return redirect()->route('record.index');
+        return redirect()->route('location.index');
     }
 
     /**
@@ -77,6 +77,7 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
-        //
+        $location->delete();
+        return redirect()->route('location.index');
     }
 }

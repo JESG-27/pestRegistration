@@ -23,6 +23,9 @@ Route::get('/', function () {
 });
 
 Route::resource('record', RecordController::class);
+Route::delete('crop-records/{crop}', [RecordController::class, 'deleteCropRecords'])->name('crop.deleteCropRecords');
+Route::delete('pest-records/{pest}', [RecordController::class, 'deletePestRecords'])->name('pest.deletePestRecords');
+Route::delete('location-records/{location}', [RecordController::class, 'deleteLocationRecords'])->name('location.deleteLocationRecords');
 Route::resource('crop', CropController::class);
 Route::resource('pest', PestController::class);
 Route::resource('location', LocationController::class);

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crop;
+use App\Models\File;
 use App\Models\Location;
 use App\Models\Pest;
 use App\Models\Record;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecordController extends Controller
 {
@@ -21,8 +23,7 @@ class RecordController extends Controller
      */
     public function index()
     {
-        //$records = Record::all();
-        $records = Record::with('crop')->get();
+        $records = Record::all();
         return view('record.index', compact('records'));
     }
 
@@ -44,21 +45,26 @@ class RecordController extends Controller
     {
         # Validation
         $request->validate([
-            'crop' => ['required', 'integer'],
-            'pest' => ['required', 'integer'],
-            'location' => ['required', 'integer'],
+            'crop_id' => ['required', 'integer'],
+            'pest_id' => ['required', 'integer'],
+            'location_id' => ['required', 'integer'],
             'level' => ['required', 'string', 'max:255'],
             'comment' => ['required', 'string', 'max:255']
         ]);
 
-        $record = new Record();
-        $record->user_id = auth()->id();
-        $record->crop_id = $request->crop;
-        $record->pest_id = $request->pest;
-        $record->location_id = $request->location;
-        $record->level = $request->level;
-        $record->comment = $request->comment;
-        $record->save();
+        $request->merge(['user_id' => Auth::id()]);
+        $record = Record::create($request->all());
+
+        if ($request->file('image')->isValid()) {
+            $path = $request->image->store('', 'public');
+
+            $file = new File();
+            $file->path = $path;
+            $file->name = $request->image->getClientOriginalName();
+            $file->mime = $request->image->getClientMimeType();
+            $file->record_id = $record->id;
+            $file->save();
+        }
 
         return redirect()->route('record.index');
     }
@@ -89,19 +95,14 @@ class RecordController extends Controller
     {
         # Validation
         $request->validate([
-            'crop' => ['required', 'integer'],
-            'pest' => ['required', 'integer'],
-            'location' => ['required', 'integer'],
+            'crop_id' => ['required', 'integer'],
+            'pest_id' => ['required', 'integer'],
+            'location_id' => ['required', 'integer'],
             'level' => ['required', 'string', 'max:255'],
             'comment' => ['required', 'string', 'max:255']
         ]);
 
-        $record->crop_id = $request->crop;
-        $record->pest_id = $request->pest;
-        $record->location_id = $request->location;
-        $record->level = $request->level;
-        $record->comment = $request->comment;
-        $record->save();
+        $record->update($request->all());
 
         return redirect()->route('record.show', $record);
     }
@@ -113,5 +114,26 @@ class RecordController extends Controller
     {
         $record->delete();
         return redirect()->route('record.index');
+    }
+    
+    public function deleteCropRecords(Crop $crop)
+    {
+        $records = Record::where('crop_id', $crop->id)->get();
+        $records->each->delete();
+        return redirect()->route('crop.show', $crop->id);
+    }
+
+    public function deletePestRecords(Pest $pest)
+    {
+        $records = Record::where('pest_id', $pest->id)->get();
+        $records->each->delete();
+        return redirect()->route('pest.show', $pest->id);
+    }
+
+    public function deleteLocationRecords(Location $location)
+    {
+        $records = Record::where('location_id', $location->id)->get();
+        $records->each->delete();
+        return redirect()->route('location.show', $location->id);
     }
 }

@@ -44,7 +44,7 @@ class PestController extends Controller
         $pest->description = $request->description;
         $pest->save();
 
-        return redirect()->route('record.index');
+        return redirect()->route('pest.index');
     }
 
     /**
@@ -77,6 +77,7 @@ class PestController extends Controller
      */
     public function destroy(Pest $pest)
     {
-        //
+        $pest->delete();
+        return redirect()->route('pest.index');
     }
 }

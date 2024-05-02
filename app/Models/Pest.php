@@ -13,4 +13,9 @@ class Pest extends Model
     {
         return $this->hasMany(Record::class);
     }
+
+    public function crops()
+    {
+        return $this->belongsToMany(Crop::class, $table = 'records', $foreignKey = 'pest_id', $relatedKey = 'crop_id');
+    }
 }
