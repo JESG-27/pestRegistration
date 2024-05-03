@@ -136,4 +136,9 @@ class RecordController extends Controller
         $records->each->delete();
         return redirect()->route('location.show', $location->id);
     }
+
+    public function downloadFile(File $file)
+    {
+        return response()->download(storage_path('app/public/' . $file->path), $file->name);
+    }
 }

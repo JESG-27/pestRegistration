@@ -31,7 +31,10 @@
                     <ul>
                       <li>{{ $record->comment }}</li>
                     </ul>  
-                    <li>Imagen: <br><img src="{{ asset('storage/' . $record->files->first()->path) }}" width="150px"></li>
+                    <li>Imagen:<br>
+                      <img src="{{ asset('storage/' . $record->files->first()->path) }}" width="150px"><br>
+                      <a href="{{ route('record.downloadFile', $record->files->first()) }}">Descargar</a>
+                    </li>
                 </ul>
                 <div class="row">
                     <div class="col-6 d-flex align-items-center">
