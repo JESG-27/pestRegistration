@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Report;
 use App\Models\Crop;
 use App\Models\File;
 use App\Models\Location;
@@ -10,6 +11,7 @@ use App\Models\Record;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class RecordController extends Controller
 {
@@ -140,5 +142,21 @@ class RecordController extends Controller
     public function downloadFile(File $file)
     {
         return response()->download(storage_path('app/public/' . $file->path), $file->name);
+    }
+
+    public function generateReport()
+    {
+        return view('record.report');
+    }
+
+    public function sendReport(Request $request)
+    {
+        $request->validate([
+            'mail' => ['required', 'email']
+        ]);
+
+        $records = Record::all();
+        Mail::to($request->mail)->send(new Report($records));
+        return redirect()->route('record.index');
     }
 }
