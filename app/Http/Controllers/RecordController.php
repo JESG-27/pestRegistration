@@ -147,19 +147,13 @@ class RecordController extends Controller
         return response()->download(storage_path('app/public/' . $file->path), $file->name);
     }
 
-    public function generateReport()
-    {
-        return view('record.report');
-    }
-
     public function sendReport(Request $request)
     {
         $request->validate([
             'mail' => ['required', 'email']
         ]);
-
-        $records = Record::all();
-        Mail::to($request->mail)->send(new Report($records));
+        $record = Record::find($request->record);
+        Mail::to($request->mail)->send(new Report($record));
         return redirect()->route('record.index');
     }
 }

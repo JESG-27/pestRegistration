@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Record;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -12,13 +13,19 @@ use Illuminate\Queue\SerializesModels;
 class Report extends Mailable
 {
     use Queueable, SerializesModels;
-    public $records; 
+    public $crop;
+    public $pest;
+    public $location; 
+    public $imagePath;
     /**
      * Create a new message instance.
      */
-    public function __construct($records)
+    public function __construct(public Record $record)
     {
-        $this->records = $records;
+        $this->crop = $record->crop;
+        $this->pest = $record->pest;
+        $this->location = $record->location;
+        $this->imagePath = 'storage/'.$record->files->first()->path;
     }
 
     /**
@@ -27,7 +34,7 @@ class Report extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reporte de Registros',
+            subject: 'Reporte de Registro',
         );
     }
 

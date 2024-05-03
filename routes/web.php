@@ -27,7 +27,6 @@ Route::delete('crop-records/{crop}', [RecordController::class, 'deleteCropRecord
 Route::delete('pest-records/{pest}', [RecordController::class, 'deletePestRecords'])->name('pest.deletePestRecords');
 Route::delete('location-records/{location}', [RecordController::class, 'deleteLocationRecords'])->name('location.deleteLocationRecords');
 Route::get('download/{file}', [RecordController::class, 'downloadFile'])->name('record.downloadFile');
-Route::get('report', [RecordController::class, 'generateReport'])->name('record.generateReport');
 Route::post('report', [RecordController::class, 'sendReport'])->name('record.sendReport');
 Route::resource('crop', CropController::class);
 Route::resource('pest', PestController::class);

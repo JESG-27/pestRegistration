@@ -1,7 +1,6 @@
 <x-crud-layout>
     <h1>Listado de registro de plagas</h1>
     <div class="card-body px-0 pb-2">
-        <a href="{{ route('record.generateReport') }}">Enviar reporte</a>
         <div class="table-responsive p-0">
             <table class="table align-items-center mb-0">
             <th>
