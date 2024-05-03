@@ -17,7 +17,7 @@ class RecordController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth');
     }
     
     /**
@@ -84,6 +84,7 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
+        $this->authorize('update', $record);
         $crops = Crop::all();
         $pests = Pest::all();
         $locations = Location::all();
@@ -95,6 +96,7 @@ class RecordController extends Controller
      */
     public function update(Request $request, Record $record)
     {
+        $this->authorize('update', $record);   
         # Validation
         $request->validate([
             'crop_id' => ['required', 'integer'],
@@ -114,6 +116,7 @@ class RecordController extends Controller
      */
     public function destroy(Record $record)
     {
+        $this->authorize('delete', $record);
         $record->delete();
         return redirect()->route('record.index');
     }
