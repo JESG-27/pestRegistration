@@ -95,7 +95,7 @@
                         <label for="image" class="text-dark mb-1 font-weight-bold text-sm">Imágen</label>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                        <input type="file" name="image" id="image">
+                        <input type="file" name="image" id="image" required>
                     </div>
                   </li>
                 </ul>

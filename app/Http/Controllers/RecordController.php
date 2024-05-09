@@ -51,7 +51,8 @@ class RecordController extends Controller
             'pest_id' => ['required', 'integer'],
             'location_id' => ['required', 'integer'],
             'level' => ['required', 'string', 'max:255'],
-            'comment' => ['required', 'string', 'max:255']
+            'comment' => ['required', 'string', 'max:255'],
+            'image' => ['required', 'image']
         ]);
 
         $request->merge(['user_id' => Auth::id()]);

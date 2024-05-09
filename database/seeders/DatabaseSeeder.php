@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Location;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +23,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CropSeeder::class,
-            // CropSeeder::class,
+            LocationSeeder::class,
+            PestSeeder::class
         ]);
     }
 }
