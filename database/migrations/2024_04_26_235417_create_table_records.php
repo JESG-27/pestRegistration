@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('level');
             $table->string('comment');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
