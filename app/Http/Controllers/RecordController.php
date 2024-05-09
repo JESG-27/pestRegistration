@@ -25,7 +25,8 @@ class RecordController extends Controller
      */
     public function index()
     {
-        $records = Record::all();
+        //$records = Record::all();
+        $records = Record::with('crop:id,name', 'pest:id,name', 'location:id,name,state')->get();
         return view('record.index', compact('records'));
     }
 
